@@ -3,18 +3,20 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	
+
 	<!-- 设置上传文件大小 -->
 	<!-- <constant name="struts.multipart.maxSize" value="2097152"></constant> -->
-	
-	
+
+
 	<package name="demo1" extends="struts-default" namespace="/">
+
 		<action name="user_*" class="userAction" method="{1}">
-			<result name="loginsuccess">/main.htm</result>
+			<result name="loginsuccess" type="redirectAction">user_enterMain</result>
 			<result name="login">/index.jsp</result>
 			<result name="enterLogin">/index.jsp</result>
+			<result name="enterMain">/main.htm</result>
 		</action>
-		
+
 		<action name="customer_*" class="customerAction" method="{1}">
 			<!-- 到添加页面 -->
 			<result name="toAddPage">/jsp/customer/add.jsp</result>
@@ -40,7 +42,7 @@
 			<!-- 根据级别统计 -->
 			<result name="countLevel">/jsp/customer/listLevel.jsp</result>
 		</action>
-		
+
 		<action name="linkman_*" class="linkManAction" method="{1}">
 			<!-- 到添加页面 -->
 			<result name="toAddPage">/jsp/linkman/add.jsp</result>
@@ -56,7 +58,7 @@
 			<result name="toSelectPage">/jsp/select/linkman.jsp</result>
 			<result name="moreCondition">/jsp/linkman/list.jsp</result>
 		</action>
-		
+
 		<action name="visit_*" class="visitAction" method="{1}">
 			<result name="toAddPage">/jsp/visit/add.jsp</result>
 			<result name="addVisit">/jsp/success.jsp</result>

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
@@ -12,15 +10,20 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
-	
-	<bean id="customerAction" class="cn.itcast.action.CustomerAction" scope="prototype">
+
+	<!-- 注解实现aop 需要开启aop操作 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+	<bean id="customerAOP" class="cn.itcast.aop.CustomerAOP"></bean>
+
+	<bean id="customerAction" class="cn.itcast.action.CustomerAction"
+		scope="prototype">
 		<property name="customerService" ref="customerService"></property>
 	</bean>
-	
+
 	<bean id="customerService" class="cn.itcast.service.CustomerService">
 		<property name="customerDao" ref="customerDaoImpl"></property>
 	</bean>
-	
+
 	<bean id="customerDaoImpl" class="cn.itcast.dao.CustomerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>

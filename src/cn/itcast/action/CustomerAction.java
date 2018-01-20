@@ -78,7 +78,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	}
 
 	//分页的方法
-	public String listpage() {
+	public String listPage() {
 		//调用service的方法实现封装
 		PageBean pageBean = customerService.listpage(currentPage);
 		//放到域对象里面
@@ -89,6 +89,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	//1 到添加页面
 	public String toAddPage() {
 		//查询所有级别
+		System.out.println("调用了toAddPage");
 		List<Dict> listDict = customerService.findAllDictLevel();
 		ServletActionContext.getRequest().setAttribute("listDict", listDict);
 		return "toAddPage";

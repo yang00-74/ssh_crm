@@ -37,6 +37,9 @@ public class UserAction extends ActionSupport {
 	public String login() {
 		//封装实体类对象
 		User user = new User();
+		if(null==username || username.equals("")){
+			return "enterLogin";
+		}
 		user.setUsername(username);
 		user.setPassword(password);
 		//调用service的方法实现
@@ -61,5 +64,8 @@ public class UserAction extends ActionSupport {
 			request.getSession().removeAttribute("user");			
 		}
 		return "enterLogin";
+	}
+	public String enterMain(){
+		return "enterMain";
 	}
 }

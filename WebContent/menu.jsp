@@ -142,7 +142,7 @@ A.active {
 
 												<TR>
 													<TD class=menuSmall><A class=style2
-														href="${pageContext.request.contextPath }/customer_listpage.action?currentPage=1"
+														href="${pageContext.request.contextPath }/customer_listPage.action?currentPage=1"
 														target=main>－ 分页客户列表</A></TD>
 												</TR>
 
